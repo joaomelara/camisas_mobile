@@ -6,6 +6,7 @@ import { useEffect, useState} from 'react'
 import { app_auth, app_db } from '../../../firebaseConfig'
 import { doc , collection, query, where, onSnapshot, documentId} from 'firebase/firestore'
 import Carousel from "../../components/carousel";
+import { ItemList } from "../../components/itemlist";
 
 export function Home({ navigation }){
     const [Usuario, setUsuario] = useState({})
@@ -49,6 +50,7 @@ export function Home({ navigation }){
                 }
             
             }
+            
         })
 
         return() => subscriver()
@@ -59,23 +61,26 @@ export function Home({ navigation }){
         <SafeAreaView style={styles.container} >
 
                 
-                <View style={styles.areaPesquisa} >
-                    <TextInput placeholder="Pesquise sua pesquisa" style={styles.pesquisa} autoCapitalize="none" />
-                    <FontAwesome style={styles.iconePesquisa} name="search" size={28} />
-                </View>
-                <View style={styles.areaFiltro}>
-                    <Text style={styles.textoDestaques} >Destaques</Text>
-                    <TouchableOpacity style={styles.botaoFiltro} >
-                        <Text style={styles.textoFiltros} >Filtros</Text>
-                        <FontAwesome style={styles.iconeFiltro} name="filter" size={28} />
-                    </TouchableOpacity>
+            <View style={styles.areaPesquisa} >
+                <TextInput placeholder="Pesquise sua pesquisa" style={styles.pesquisa} autoCapitalize="none" />
+                <FontAwesome style={styles.iconePesquisa} name="search" size={28} />
             </View>
-                <View style={styles.carousel}>
+            <View style={styles.areaFiltro}>
+                <Text style={styles.textoDestaques} >Destaques</Text>
+                <TouchableOpacity style={styles.botaoFiltro} >
+                    <Text style={styles.textoFiltros} >Filtros</Text>
+                    <FontAwesome style={styles.iconeFiltro} name="filter" size={28} />
+                </TouchableOpacity>
+            </View>
+            <View style={styles.carousel}>
                 <Carousel/>
-                </View>
+            </View>
             <View style={styles.areaUsuario}>
                 <FontAwesome style={styles.iconeUsuario} name="user-circle" size={40} />
                 <Text style={styles.nomeUsuario} > Seja bem-vindo, {Usuario.Nome}!</Text>
+            </View>
+            <View style={styles.areaProdutos} >
+                <ItemList/>
             </View>
            
             
@@ -85,10 +90,7 @@ export function Home({ navigation }){
 
 const styles = StyleSheet.create({
     container:{
-        flex: 1,
-        display: 'flex',
-        justifyContent: 'flex-start',
-        alignItems: 'center'
+        
     },
     areaPesquisa:{
         paddingStart: 20,
@@ -130,6 +132,7 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         marginTop: 25,
         justifyContent: 'center',
+        alignSelf: 'center'
         
     },
     iconeUsuario:{
@@ -193,6 +196,9 @@ const styles = StyleSheet.create({
         borderTopWidth: 3,
         borderColor: "#c9c9c9"
         
+    },
+    areaProdutos:{
+        marginTop: 50
     }
 
 })
