@@ -1,5 +1,5 @@
 
-import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput, ActivityIndicator } from "react-native"
+import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput, ActivityIndicator, ScrollView } from "react-native"
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FontAwesome } from 'react-native-vector-icons';
 import { useEffect, useState} from 'react'
@@ -60,7 +60,7 @@ export function Home({ navigation }){
     return(
         <SafeAreaView style={styles.container} >
 
-                
+            <ScrollView>
             <View style={styles.areaPesquisa} >
                 <TextInput placeholder="Pesquise sua pesquisa" style={styles.pesquisa} autoCapitalize="none" />
                 <FontAwesome style={styles.iconePesquisa} name="search" size={28} />
@@ -77,20 +77,22 @@ export function Home({ navigation }){
             </View>
             <View style={styles.areaUsuario}>
                 <FontAwesome style={styles.iconeUsuario} name="user-circle" size={40} />
-                <Text style={styles.nomeUsuario} > Seja bem-vindo, {Usuario.Nome}!</Text>
+                <Text style={styles.nomeUsuario} >Seja bem-vindo, {Usuario.Nome}!</Text>
             </View>
             <View style={styles.areaProdutos} >
                 <ItemList/>
             </View>
            
-            
+            </ScrollView>
         </SafeAreaView>
+
     )
 }
 
 const styles = StyleSheet.create({
     container:{
-        
+        flex: 1,
+        backgroundColor: "#FFF"
     },
     areaPesquisa:{
         paddingStart: 20,
@@ -145,7 +147,9 @@ const styles = StyleSheet.create({
         color: "#FFF",
         fontSize: 20,
         alignSelf: 'center',
-        paddingVertical: 10
+        paddingVertical: 10, 
+        width: "75%",
+        textAlign: 'center'
 
     },
     areaFiltro:{
@@ -198,7 +202,8 @@ const styles = StyleSheet.create({
         
     },
     areaProdutos:{
-        marginTop: 50
+        marginTop: 50,
+        flex: 1,
     }
 
 })
