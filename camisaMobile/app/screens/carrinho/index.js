@@ -8,7 +8,7 @@ import { doc , collection, query, where, onSnapshot, documentId} from 'firebase/
 import Carousel from "../../components/carousel";
 import { ItemList } from "../../components/itemlist";
 
-export function Home({ navigation }){
+export function Carrinho({ navigation }){
     const [Usuario, setUsuario] = useState({})
     const [search, setSearch] = useState("");
     const [carregado, setCarregado] = useState(false)
@@ -66,25 +66,25 @@ export function Home({ navigation }){
                 <FontAwesome style={styles.iconePesquisa} name="search" size={28} />
             </View>
             <View style={styles.areaFiltro}>
-                <Text style={styles.textoDestaques} >Destaques</Text>
-                <TouchableOpacity style={styles.botaoCarrinho} onPress={() =>  navigation.navigate("Carrinho")} >
+                <Text style={styles.textoDestaques} >Carrinho</Text>
+                
+                <View style={styles.botaoCarrinho} >
                     <FontAwesome style={styles.iconeCarrinho} name="shopping-cart" size={28} />
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.botaoFiltro} onPress={() => alert("Não tá pronto ainda, afobado")} >
-                    <FontAwesome style={styles.iconeFiltro} name="filter" size={28} />
-                </TouchableOpacity>
+                </View>
+                
             </View>
-            <View style={styles.carousel}>
-                <Carousel/>
-            </View>
+            
             <View style={styles.areaUsuario}>
-                <FontAwesome style={styles.iconeUsuario} name="user-circle" size={40} />
-                <Text style={styles.nomeUsuario} >Seja bem-vindo, {Usuario.Nome}!</Text>
+                <Text style={styles.nomeUsuario} >EM DESENVOLVIMENTO{"\n"}{"\n"}COMPRE TUDO</Text>
             </View>
             <View style={styles.areaProdutos} >
                 <ItemList navigation={navigation}/>
             </View>
-           
+
+            <TouchableOpacity  style={styles.buttonRegistro}
+                onPress={() =>  navigation.navigate("Parabens")} >
+                        <Text style={styles.text} >Comprar</Text>
+                    </TouchableOpacity>
             </ScrollView>
         </SafeAreaView>
 
@@ -148,11 +148,12 @@ const styles = StyleSheet.create({
     },
     nomeUsuario:{
         color: "#FFF",
-        fontSize: 20,
+        fontSize: 15,
         alignSelf: 'center',
         paddingVertical: 10, 
         width: "75%",
-        textAlign: 'center'
+        textAlign: 'center',
+        fontWeight: 'bold'
 
     },
     areaFiltro:{
@@ -210,7 +211,7 @@ const styles = StyleSheet.create({
     },
     botaoCarrinho:{
         flexDirection: 'row',
-        backgroundColor: "#1ba0d8",
+        backgroundColor: "#106082",
         paddingHorizontal: 20,
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -221,5 +222,36 @@ const styles = StyleSheet.create({
         color: "#FFF"
 
     },
+    buttonRegistro:{
+        marginTop: 30,
+        marginBottom: 30,
+        backgroundColor: "#1ba0d8",
+        height: 60,
+        width: "70%",
+        borderRadius: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderColor: "rgba(0,0,0,0.75)", 
+        borderWidth: 3.5,
+        borderBottomWidth: 6,
+        alignItems: 'center',
+        alignSelf: 'center',
+        alignContent: 'center'
+    
+        
+       },
+      
+      areaBotao:{
+        width: "100%",
+        paddingStart: 20,
+        paddingEnd: 20,
+        alignItems: 'center',
+        alignSelf: 'center',
+        alignContent: 'center'
+    },
+    text:{
+      color: "#FFF",
+      fontSize: 20
+     },
 
 })

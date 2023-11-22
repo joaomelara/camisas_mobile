@@ -5,8 +5,8 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { app_auth } from '../../../firebaseConfig';
 
 export function Login({ navigation }){
-    const [email, setEmail] = useState('nezzi@nezzi.com')
-    const [senha, setSenha] = useState('nezzinezzi')
+    const [email, setEmail] = useState('')
+    const [senha, setSenha] = useState('')
     const [loading, setLoading] = useState(false);
 
     const Login = async () => {

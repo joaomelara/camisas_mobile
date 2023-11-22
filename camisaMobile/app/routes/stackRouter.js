@@ -5,6 +5,8 @@ import { Cadastro } from "../screens/cadastro";
 import { Login } from "../screens/login";
 import { Home } from "../screens/home";
 import { Produto } from "../screens/produto";
+import { Carrinho } from "../screens/carrinho";
+import { Parabens } from "../screens/parabens";
 //import { NavigationContainer } from "@react-navigation/native";
 
 
@@ -37,6 +39,16 @@ export default function Routes() {
       <Stack.Screen
           name="Produto"
           component={Produto}
+          options={{ headerShown: false }}>
+      </Stack.Screen>
+      <Stack.Screen
+          name="Carrinho"
+          component={Carrinho}
+          options={{ headerShown: false }}>
+      </Stack.Screen>
+      <Stack.Screen
+          name="Parabens"
+          component={Parabens}
           options={{ headerShown: false }}>
       </Stack.Screen>
      

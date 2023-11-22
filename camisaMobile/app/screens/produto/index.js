@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image,TextInput,} from "react-native";
+import { View, Text, StyleSheet, Image,TextInput, ScrollView, TouchableOpacity} from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { app_auth, app_db } from '../../../firebaseConfig';
 import { doc , collection, query, where, onSnapshot, documentId} from 'firebase/firestore';
@@ -46,6 +46,7 @@ export function Produto({ navigation, route }){
 
     return(
     <SafeAreaView style={styles.container}>
+      <ScrollView>
         <View style={styles.areaPesquisa} >
                 <TextInput placeholder="Pesquise sua pesquisa" style={styles.pesquisa} autoCapitalize="none" />
                 <FontAwesome style={styles.iconePesquisa} name="search" size={28} />
@@ -63,9 +64,12 @@ export function Produto({ navigation, route }){
                           <Text style={styles.preco}>R$ {Produtos.Preco},00</Text>
                           <Text style={styles.juros}>ou em {Produtos.Preco}X sem juros de R$1</Text>
                           <Text style={styles.pagamentos}>Meios de pagamento: tudo que você tem</Text>
-                          <Text></Text>
+                          <Text style={styles.cor}>COR: {Produtos.Cor}</Text>
+                          
                           </View>
-                        
+                          <View style ={styles.areaDesc2}>
+                          <Text style={styles.descricao}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Text>
+                          </View>
 
                     </View>
                 ) : (
@@ -74,6 +78,13 @@ export function Produto({ navigation, route }){
                         <ActivityIndicator size={110} color="#38BA9B" />
                     </View>
                 )}
+                <View style={styles.areaBotao}>
+                <TouchableOpacity  style={styles.buttonRegistro}
+                onPress={() =>  navigation.navigate("Carrinho")} >
+                        <Text style={styles.text} >Adicionar ao Carrinho</Text>
+                    </TouchableOpacity>
+                </View>
+                </ScrollView>
     </SafeAreaView>
     )
 }
@@ -165,5 +176,48 @@ const styles = StyleSheet.create({
     },
     areaDesc:{
         
-    }
+    },
+    cor:{
+      alignSelf: "flex-start",
+        fontSize: 14,
+        marginTop: 20,
+        marginLeft: -20,
+        color: "#000",
+        fontWeight: "bold"
+    },
+    areaDesc2:{
+        paddingHorizontal: 50,
+        opacity: 0.5,
+        textAlign: 'center',
+        marginTop: 5
+        
+    },
+    buttonRegistro:{
+      marginTop: 30,
+      marginBottom: 30,
+      backgroundColor: "#1ba0d8",
+      height: 60,
+      width: "100%",
+      borderRadius: 15,
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderColor: "rgba(0,0,0,0.75)", 
+      borderWidth: 3.5,
+      borderBottomWidth: 6
+      
+     },
+    descricao:{
+      justifyContent: "center",
+      textAlign: 'justify'
+    },
+    areaBotao:{
+      width: "100%",
+      paddingStart: 20,
+      paddingEnd: 20,
+      alignItems: 'center'
+  },
+  text:{
+    color: "#FFF",
+    fontSize: 20
+   },
 })
