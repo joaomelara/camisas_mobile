@@ -5,8 +5,8 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { app_auth } from '../../../firebaseConfig';
 
 export function Login({ navigation }){
-    const [email, setEmail] = useState('')
-    const [senha, setSenha] = useState('')
+    const [email, setEmail] = useState('nezzi@nezzi.com')
+    const [senha, setSenha] = useState('nezzinezzi')
     const [loading, setLoading] = useState(false);
 
     const Login = async () => {
@@ -42,8 +42,8 @@ export function Login({ navigation }){
                 <Image style={styles.Logo} source={require('../../assets/logocCamisa.png')}/>
             </View>
             <View style={styles.areaEscreve} >
-                <TextInput placeholder="Insira a porcaria do seu email" style={styles.input} value={email} onChangeText={(text) => setEmail(text)} autoCapitalize="none" />
-                <TextInput placeholder="Insira a porcaria da sua senha" style={styles.input} value={senha} onChangeText={(text) => setSenha(text)} secureTextEntry={true} autoCapitalize="none" />
+                <TextInput placeholder="Insira o seu email" style={styles.input} value={email} onChangeText={(text) => setEmail(text)} autoCapitalize="none" />
+                <TextInput placeholder="Insira a sua senha" style={styles.input} value={senha} onChangeText={(text) => setSenha(text)} secureTextEntry={true} autoCapitalize="none" />
             </View>
             <View style={styles.areaBotao} >
                 {loading ? (

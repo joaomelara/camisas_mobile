@@ -4,6 +4,7 @@ import { Inicio } from "../screens/inicio";
 import { Cadastro } from "../screens/cadastro";
 import { Login } from "../screens/login";
 import { Home } from "../screens/home";
+import { Produto } from "../screens/produto";
 //import { NavigationContainer } from "@react-navigation/native";
 
 
@@ -31,6 +32,11 @@ export default function Routes() {
       <Stack.Screen
           name="Home"
           component={Home}
+          options={{ headerShown: false }}>
+      </Stack.Screen>
+      <Stack.Screen
+          name="Produto"
+          component={Produto}
           options={{ headerShown: false }}>
       </Stack.Screen>
      

@@ -67,8 +67,10 @@ export function Home({ navigation }){
             </View>
             <View style={styles.areaFiltro}>
                 <Text style={styles.textoDestaques} >Destaques</Text>
+                <TouchableOpacity style={styles.botaoCarrinho} >
+                    <FontAwesome style={styles.iconeCarrinho} name="shopping-cart" size={28} />
+                </TouchableOpacity>
                 <TouchableOpacity style={styles.botaoFiltro} >
-                    <Text style={styles.textoFiltros} >Filtros</Text>
                     <FontAwesome style={styles.iconeFiltro} name="filter" size={28} />
                 </TouchableOpacity>
             </View>
@@ -80,7 +82,7 @@ export function Home({ navigation }){
                 <Text style={styles.nomeUsuario} >Seja bem-vindo, {Usuario.Nome}!</Text>
             </View>
             <View style={styles.areaProdutos} >
-                <ItemList/>
+                <ItemList navigation={navigation}/>
             </View>
            
             </ScrollView>
@@ -134,7 +136,8 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         marginTop: 25,
         justifyContent: 'center',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        marginBottom: -20
         
     },
     iconeUsuario:{
@@ -204,6 +207,19 @@ const styles = StyleSheet.create({
     areaProdutos:{
         marginTop: 50,
         flex: 1,
-    }
+    },
+    botaoCarrinho:{
+        flexDirection: 'row',
+        backgroundColor: "#1ba0d8",
+        paddingHorizontal: 20,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderRadius: 20,
+        height: 40
+    },
+    iconeCarrinho:{
+        color: "#FFF"
+
+    },
 
 })

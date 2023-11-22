@@ -1,9 +1,9 @@
-import { View, Text, Image, StyleSheet, FlatList } from "react-native";
+import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity } from "react-native";
 import { app_db } from "../../../firebaseConfig";
 import { collection, onSnapshot, query } from 'firebase/firestore'
 import { useState, useEffect } from "react";
 
-export function ItemList(){
+export function ItemList({navigation}){
     const [Produtos, setProdutos] = useState([]);
 
     useEffect(() => {
@@ -38,27 +38,36 @@ export function ItemList(){
 
     
     return(
+      
         <View style={{ flex: 1 }} >
+          
             <FlatList
                 data={Produtos}
                 scrollEnabled = {false}
                 showsVerticalScrollIndicator ={false}
                 numColumns={2}
                 renderItem={({item}) => (
+                  
                   <View style={styles.container} >
+                    <TouchableOpacity
+                    onPress={() =>  navigation.navigate("Produto", {Chave:[item.key]})}>
                     <View style={styles.row} >
                       
                         
                         <Image style={styles.icon} source={{uri : item.image}}/>
                         <Text style={styles.produto}>{item.Nome}</Text>
-                        <Text style={styles.produto}>R${item.Preco},00</Text>
+                        <Text style={styles.produto2}>R${item.Preco},00</Text>
                         
                     </View>
+                    </TouchableOpacity>
                   </View>
+                  
                 )
                 }
             />
+            
         </View>
+        
     )
     
 }
@@ -97,6 +106,14 @@ const styles = StyleSheet.create({
     textAlign: "center"
     
     
-  }
+  },
+  produto2:{
+    paddingVertical: 6,
+    textAlign: "center",
+    fontWeight: 'bold',
+    
+    
+  },
+  
 
 })
